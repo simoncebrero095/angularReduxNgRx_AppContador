@@ -8,6 +8,15 @@ import { Component, OnInit, Input } from '@angular/core';
 export class HijoComponent implements OnInit {
 @Input() contador: number;
   constructor() { }
+  
+
+multiplicar(){
+  this.contador *=2; 
+}
+dividir(){
+  this.contador /=2;
+}
+
 
   ngOnInit(): void {
   }
