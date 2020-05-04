@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { incrementar,decrementar } from './contador/contador.actions';
+interface AppState {
+  contador: number;
+}
 
 @Component({
   selector: 'app-root',
@@ -6,21 +11,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'reduxNgrx';
+  
 
 contador: number;
 
-constructor(){
-this.contador = 10;
+constructor(private store: Store<AppState>){
+this.store.subscribe(state => {
+  console.log(state);
+});
+
 }
 
 incrementar(){
-  this.contador ++; 
+   this.store.dispatch(incrementar())
 
 }
 
 decrementar(){
-this.contador --;
+  this.store.dispatch(decrementar())
 }
 
 
